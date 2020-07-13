@@ -1,0 +1,38 @@
+openapi: "3.0.0"
+info:
+  description: >
+    The FellowFolio API is meant to be the bridge between its frontend and backend.
+    The backend serves as a pseudo-proxy for all GitHub API and OAUTH requests.
+    It also handles the creation of shareable links so that a profile statistics page can be made public.
+    Made with ♥ by the team @ Anonymous Walruses (:3 っ)っ
+  title: "FellowFolio API"
+  version: "v0.0.1"
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://placeholder.com/api/v001
+paths:
+  /share:
+    post:
+      summary: Submit a request to make a statistic page public.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: "The user's unique ID"
+      responses:
+        201:
+          description: "Request successfully satisfied"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    description: "The full url to the profile's public page"
