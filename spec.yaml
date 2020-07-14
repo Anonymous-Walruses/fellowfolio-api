@@ -13,8 +13,46 @@ info:
 servers:
   - url: https://placeholder.com/api/v001
 paths:
+  /oauth/code4token:
+    post:
+      tags:
+        - OAUTH
+      summary: Exchange an oauth code for an access token.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: The access code sent from GitHub
+                username:
+                  type: string
+                  description: The username associated with the access code.
+      responses:
+        200:
+          description: "Exchange made successfully"
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    description: A string saying 'Exchange made successfully'
+        400:
+          description: "Exchange failed"
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    description: An error string explaining why the request failed
   /share:
     post:
+      tags:
+        - Information Request
       summary: Submit a request to make a statistic page public.
       requestBody:
         content:
